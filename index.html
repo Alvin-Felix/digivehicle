@@ -398,8 +398,7 @@
             r.onresult = e => { this.data[id] = e.results[0][0].transcript; this.renderStep(); };
             r.start();
         },
-
-        finish: async function() {
+finish: async function() {
             // Security: Strip OTP
             const safe = {...this.data}; delete safe.otp;
             
@@ -413,7 +412,6 @@
             localStorage.setItem('DigiLoan_Ultimate_V2', JSON.stringify(this.records));
             this.render();
         },
-
         exportWord: function(i) {
             const rec = this.records[i];
             const isTa = this.lang === 'ta';
