@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563eb">
+    <title>Application Success - DigiLoan</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --success: #16a34a;
+            --surface: #ffffff;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .success-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-top: 5px solid var(--success);
+        }
+
+        .icon-check {
+            width: 60px;
+            height: 60px;
+            background: #dcfce7;
+            color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+
+        h1 { margin: 0 0 10px; font-size: 1.5rem; color: var(--primary); }
+        p { color: #64748b; margin-bottom: 20px; line-height: 1.5; }
+
+        .info-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .info-label { font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 700; }
+        .info-value { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: 5px; }
+
+        .section-header {
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text);
+        }
+
+        .checklist { list-style: none; padding: 0; text-align: left; }
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .check-icon { color: var(--success); font-weight: bold; }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <div class="icon-check">✓</div>
+        <h1>Application Submitted</h1>
+        <p>Your vehicle loan application has been successfully initiated. Please note the reference number below.</p>
+
+        <div class="info-box">
+            <div class="info-label">Application Reference No</div>
+            <div class="info-value" id="refNo">IR889381EF</div> 
+        </div>
+
+        <div class="section-header">Next Steps: Branch Procedure</div>
+        <ul class="checklist">
+            <li><span class="check-icon">1.</span> <strong>Visit Branch:</strong> Contact selected branch with Ref No.</li>
+            <li><span class="check-icon">2.</span> <strong>Field Investigation:</strong> Official will verify Residence/Office.</li>
+            <li><span class="check-icon">3.</span> <strong>Dealer Check:</strong> Branch validates dealer bank account (Penny Drop).</li>
+            <li><span class="check-icon">4.</span> <strong>Sanction:</strong> Branch Manager approves loan.</li>
+            <li><span class="check-icon">5.</span> <strong>Acceptance:</strong> Login to portal to "Accept Offer".</li>
+            <li><span class="check-icon">6.</span> <strong>Disbursement:</strong> Bank pays directly to Dealer via RTGS.</li>
+        </ul>
+
+        <div class="section-header">Mandatory Documents Required</div>
+        <ul class="checklist">
+            <li><span class="check-icon">📄</span> <strong>KYC:</strong> PAN Card & Aadhaar Card.</li>
+            <li><span class="check-icon">📷</span> <strong>Photo:</strong> Recent passport size photo.</li>
+            <li><span class="check-icon">💰</span> <strong>Income:</strong> Salary Slips (3 months) / ITR (2 years).</li>
+            <li><span class="check-icon">🚗</span> <strong>Vehicle:</strong> Dealer Quotation (Proforma Invoice).</li>
+            <li><span class="check-icon">🏦</span> <strong>Bank:</strong> Statement showing salary credit.</li>
+        </ul>
+
+        <a href="index.html" class="btn">Start New Application</a>
+        <button onclick="window.print()" class="btn btn-outline">Print Acknowledgement</button>
+    </div>
+
+    <script>
+        // Auto-populate Ref No if passed in URL
+        const params = new URLSearchParams(window.location.search);
+        const ref = params.get('ref');
+        if(ref) document.getElementById('refNo').innerText = ref;
+    </script>
+
+</body>
+</html>
